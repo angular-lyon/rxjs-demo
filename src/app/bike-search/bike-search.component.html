@@ -1,4 +1,3 @@
-<h1>Bikes</h1>
 <div fxLayout="row" fxLayoutAlign="center">
   <mat-form-field appearance="outline">
     <input
@@ -10,5 +9,5 @@
   </mat-form-field>
 </div>
 <div fxLayout="row wrap" fxLayoutAlign="space-around">
-  <app-bike class="bike" *ngFor="let bike of bikes" [bike]="bike"></app-bike>
+  <app-bike class="bike" *ngFor="let bike of bikes" [bike]="bike" [routerLink]="['/bikes', bike.id]"></app-bike>
 </div>
