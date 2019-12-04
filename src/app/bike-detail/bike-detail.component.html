@@ -1,2 +1,2 @@
-<app-bike [bike]="bike$ | async"></app-bike>
+<app-bike *ngIf="bike$ | async as bike" [bike]="bike"></app-bike>
 <a [routerLink]="['/bikes']"><button mat-button>BACK</button></a>
