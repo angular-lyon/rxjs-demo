@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Bike } from './bike';
 
 @Component({
   selector: 'app-bike',
   templateUrl: './bike.component.html',
   styleUrls: ['./bike.component.css']
 })
-export class BikeComponent implements OnInit {
+export class BikeComponent implements OnChanges {
 
-  constructor() { }
+  @Input() bike: Bike;
 
-  ngOnInit() {
+  bikePictureUrl: string;
+
+  ngOnChanges() {
+    const color = encodeURIComponent(this.bike.color);
+    this.bikePictureUrl = `https://source.unsplash.com/featured?${color}+bike`;
   }
-
 }

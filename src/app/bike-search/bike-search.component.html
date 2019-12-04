@@ -2,5 +2,5 @@
 <div
   fxLayout="row wrap"
   fxLayoutAlign="space-around">
-  <app-bike class="bike" *ngFor="let _ of [1,2,3]"></app-bike>
+  <app-bike class="bike" *ngFor="let bike of bikes" [bike]="bike"></app-bike>
 </div>

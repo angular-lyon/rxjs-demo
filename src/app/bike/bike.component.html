@@ -1,12 +1,9 @@
 <mat-card>
   <mat-card-header>
-    <mat-card-title>Title</mat-card-title>
-    <mat-card-subtitle>Subtitle</mat-card-subtitle>
+    <mat-card-title>{{ bike.name }}</mat-card-title>
+    <mat-card-subtitle>{{ bike.type }} </mat-card-subtitle>
   </mat-card-header>
-  <img mat-card-image src="https://source.unsplash.com/featured?bike" alt="Photo of a bike">
+  <img mat-card-image [src]="bikePictureUrl" alt="Photo of a bike">
   <mat-card-content>
-    <p>
-      description should go here
-    </p>
   </mat-card-content>
 </mat-card>
