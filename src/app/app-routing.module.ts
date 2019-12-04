@@ -1,8 +1,14 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
+import { BikeDetailComponent } from './bike-detail/bike-detail.component';
+import { BikeSearchComponent } from './bike-search/bike-search.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  { path: 'bikes', component: BikeSearchComponent },
+  { path: 'bikes/:id', component: BikeDetailComponent },
+  { path: '**', redirectTo: 'bikes' },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
