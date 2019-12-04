@@ -1,11 +1,14 @@
 <h1>Bikes</h1>
-<!-- <form> -->
-  <!-- <mat-form-field>
-    <input matInput type="search" placeholder="Search">
-  </mat-form-field> -->
-<!-- </form> -->
-<div
-  fxLayout="row wrap"
-  fxLayoutAlign="space-around">
+<div fxLayout="row" fxLayoutAlign="center">
+  <mat-form-field appearance="outline">
+    <input
+      [formControl]="searchControl"
+      matInput
+      type="search"
+      placeholder="Search"
+    />
+  </mat-form-field>
+</div>
+<div fxLayout="row wrap" fxLayoutAlign="space-around">
   <app-bike class="bike" *ngFor="let bike of bikes" [bike]="bike"></app-bike>
 </div>

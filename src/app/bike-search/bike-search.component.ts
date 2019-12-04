@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 import { Bike } from '../bike/bike';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-bike-search',
@@ -10,6 +11,7 @@ import { Bike } from '../bike/bike';
 })
 export class BikeSearchComponent implements OnInit {
   bikes: Bike[] = [];
+  searchControl = new FormControl();
 
   constructor(private http: HttpClient) { }
 
