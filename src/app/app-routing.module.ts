@@ -6,7 +6,7 @@ import { BikeSearchComponent } from './bike-search/bike-search.component';
 
 const routes: Routes = [
   { path: 'bikes', component: BikeSearchComponent },
-  { path: 'bikes/:id', component: BikeDetailComponent },
+  { path: 'bikes/:bikeId', component: BikeDetailComponent },
   { path: '**', redirectTo: 'bikes' },
 ];
 
