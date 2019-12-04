@@ -11,5 +11,4 @@ export class BikeSearchComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }
