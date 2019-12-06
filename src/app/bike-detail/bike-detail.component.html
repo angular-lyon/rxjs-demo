@@ -1,2 +1,15 @@
-<app-bike *ngIf="bike$ | async as bike" [bike]="bike"></app-bike>
-<a [routerLink]="['/bikes']"><button mat-button>BACK</button></a>
+<a [routerLink]="['/bikes']" mat-button>BACK</a>
+<article *ngIf="bike$ | async as bike" class="container">
+  <app-bike [bike]="bike"></app-bike>
+  <ul class="details">
+    <li>
+      Price <strong>{{ bike.price }}&euro;</strong>
+    </li>
+    <li>
+      Color <strong>{{ bike.color }}</strong>
+    </li>
+    <li>
+      Type <strong>{{ bike.type }}</strong>
+    </li>
+  </ul>
+</article>
