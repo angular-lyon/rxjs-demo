@@ -1,20 +1,22 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { startWith, switchMap, exhaustMap } from 'rxjs/operators';
+import { Observable, Subject, timer } from 'rxjs';
+import { exhaustMap, startWith, switchMap, takeUntil } from 'rxjs/operators';
 
 import { environment } from '../../environments/environment';
 import { Bike } from '../bike/bike';
-import { timer, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-bike-search',
   templateUrl: './bike-search.component.html',
   styleUrls: ['./bike-search.component.css']
 })
-export class BikeSearchComponent implements OnInit {
+export class BikeSearchComponent implements OnInit, OnDestroy {
   bikes: Bike[] = [];
   searchControl = new FormControl();
+
+  private destroy = new Subject();
 
   constructor(private http: HttpClient) {}
 
@@ -24,9 +26,14 @@ export class BikeSearchComponent implements OnInit {
         startWith(''),
         switchMap(query =>
           timer(0, 1000).pipe(exhaustMap(() => this._getBikes(query)))
-        )
+        ),
+        takeUntil(this.destroy)
       )
       .subscribe(bikes => (this.bikes = bikes));
+  }
+
+  ngOnDestroy() {
+    this.destroy.next();
   }
 
   private _getBikes(query: string): Observable<Bike[]> {
