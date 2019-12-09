@@ -1,4 +1,7 @@
 img[mat-card-image] {
+  min-width: 300px;
   max-height: 200px;
+  min-height: 200px;
+  background: #eee;
   object-fit: cover;
 }
