@@ -1,25 +1,27 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { startWith, switchMap, exhaustMap } from 'rxjs/operators';
+import { Observable, Subscription, timer } from 'rxjs';
+import { exhaustMap, startWith, switchMap } from 'rxjs/operators';
 
 import { environment } from '../../environments/environment';
 import { Bike } from '../bike/bike';
-import { timer, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-bike-search',
   templateUrl: './bike-search.component.html',
   styleUrls: ['./bike-search.component.css']
 })
-export class BikeSearchComponent implements OnInit {
+export class BikeSearchComponent implements OnInit, OnDestroy {
   bikes: Bike[] = [];
   searchControl = new FormControl();
+
+  private subscription: Subscription;
 
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    this.searchControl.valueChanges
+    this.subscription = this.searchControl.valueChanges
       .pipe(
         startWith(''),
         switchMap(query =>
@@ -27,6 +29,10 @@ export class BikeSearchComponent implements OnInit {
         )
       )
       .subscribe(bikes => (this.bikes = bikes));
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   private _getBikes(query: string): Observable<Bike[]> {
