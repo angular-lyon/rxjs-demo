@@ -900,6 +900,11 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
+"@ngneat/until-destroy@^7.1.0":
+  version "7.1.0"
+  resolved "https://registry.yarnpkg.com/@ngneat/until-destroy/-/until-destroy-7.1.0.tgz#b11479e30e4d97d7c635e58b71581f119d14c11b"
+  integrity sha512-QAlLQhsK8Fs0jrIoyAxyLbOPSSydjVZAemHy/dCvI1wKMUcxYPlyxvgcYQ/QJB9h6rsqPbO1OCaBDqPUyc6gbQ==
+
 "@ngtools/webpack@9.0.0-rc.4":
   version "9.0.0-rc.4"
   resolved "https://registry.yarnpkg.com/@ngtools/webpack/-/webpack-9.0.0-rc.4.tgz#ff0b83de106cf28611a6f0a2e3ebc4a30858eb0f"
