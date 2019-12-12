@@ -1,11 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-
-import { Bike } from '../bike/bike';
 import { FormControl } from '@angular/forms';
-import { mergeMap, debounceTime, switchMap, startWith } from 'rxjs/operators';
+import { startWith, switchMap, exhaustMap } from 'rxjs/operators';
+
 import { environment } from '../../environments/environment';
-import { timer, concat, defer, of } from 'rxjs';
+import { Bike } from '../bike/bike';
+import { timer } from 'rxjs';
 
 @Component({
   selector: 'app-bike-search',
@@ -19,18 +19,21 @@ export class BikeSearchComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
-
     this.searchControl.valueChanges
       .pipe(
         startWith(''),
-        switchMap((query) =>
-          this.http.get<Bike[]>(environment.apiBaseUrl + '/bikes', {
-            params: {
-              q: query
-            }
-          })
+        switchMap(query =>
+          timer(0, 1000).pipe(
+            exhaustMap(() =>
+              this.http.get<Bike[]>(environment.apiBaseUrl + '/bikes', {
+                params: {
+                  q: query
+                }
+              })
+            )
+          )
         )
       )
-      .subscribe(bikes => this.bikes = bikes);
+      .subscribe(bikes => (this.bikes = bikes));
   }
 }
