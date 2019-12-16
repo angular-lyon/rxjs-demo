@@ -5,7 +5,7 @@ import { startWith, switchMap, exhaustMap } from 'rxjs/operators';
 
 import { environment } from '../../environments/environment';
 import { Bike } from '../bike/bike';
-import { timer } from 'rxjs';
+import { timer, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-bike-search',
@@ -23,17 +23,17 @@ export class BikeSearchComponent implements OnInit {
       .pipe(
         startWith(''),
         switchMap(query =>
-          timer(0, 1000).pipe(
-            exhaustMap(() =>
-              this.http.get<Bike[]>(environment.apiBaseUrl + '/bikes', {
-                params: {
-                  q: query
-                }
-              })
-            )
-          )
+          timer(0, 1000).pipe(exhaustMap(() => this._getBikes(query)))
         )
       )
       .subscribe(bikes => (this.bikes = bikes));
+  }
+
+  private _getBikes(query: string): Observable<Bike[]> {
+    return this.http.get<Bike[]>(environment.apiBaseUrl + '/bikes', {
+      params: {
+        q: query
+      }
+    });
   }
 }
