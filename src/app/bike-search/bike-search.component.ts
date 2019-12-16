@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Scavenger } from '@wishtack/rx-scavenger';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Observable, timer } from 'rxjs';
 import { exhaustMap, startWith, switchMap } from 'rxjs/operators';
 
 import { environment } from '../../environments/environment';
 import { Bike } from '../bike/bike';
 
+@UntilDestroy()
 @Component({
   selector: 'app-bike-search',
   templateUrl: './bike-search.component.html',
@@ -18,8 +19,6 @@ export class BikeSearchComponent implements OnInit, OnDestroy {
 
   bikes: Bike[] = [];
 
-  private scavenger = new Scavenger(this);
-
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
@@ -29,7 +28,7 @@ export class BikeSearchComponent implements OnInit, OnDestroy {
         switchMap(query =>
           timer(0, 1000).pipe(exhaustMap(() => this._getBikes(query)))
         ),
-        this.scavenger.collect()
+        untilDestroyed(this)
       )
       .subscribe(bikes => (this.bikes = bikes));
   }
