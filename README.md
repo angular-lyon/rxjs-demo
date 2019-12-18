@@ -1,27 +1,7 @@
-# RxjsDemo
+This is the source code used at the [Angular Lyon RxJS special meetup](https://www.meetup.com/Angular-Lyon/)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.0-rc.4.
+# Slides
 
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+- [Intro to RxJS](https://slides.com/tobika/intro-to-rxjs/) by [Tobias Kausch](https://twitter.com/tobikabla)
+- [RxJS flattening strategies](https://slides.com/yjaaidi/rxjs-flattening-strategy) by [Younes Jaaidi](https://twitter.com/yjaaidi)
+- [Managing Subscriptions in Angular](https://slides.com/edouardbozon/managing-subscriptions-in-angular) by [Edouard Bozon](https://twitter.com/edbzn)
