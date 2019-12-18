@@ -1,4 +1,4 @@
-This is the source code used at the [Angular Lyon RxJS special meetup](https://www.meetup.com/Angular-Lyon/)
+This is the source code used at the [Angular Lyon RxJS special meetup](https://www.meetup.com/Angular-Lyon/events/265682075/)
 
 # Slides
 
